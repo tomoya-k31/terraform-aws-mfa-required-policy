@@ -4,10 +4,10 @@ data "aws_iam_policy_document" "aws_mfa_required_policy_document" {
     actions   = "${var.deny_actions}"
     resources = "${var.deny_resources}"
 
-    condition = {
+    condition {
       test     = "BoolIfExists"
       variable = "aws:MultiFactorAuthPresent"
-      values   = false
+      values   = ["false"]
     }
   }
 }
